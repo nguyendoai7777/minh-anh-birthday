@@ -1,11 +1,10 @@
+import { gsap } from 'gsap';
+import 'swiper/swiper-bundle.css';
+import './bubble.js';
 import './bundler.js';
 import './firework.js';
 import './index.css';
-import './except.css';
 import './style.scss';
-import './bubble.js';
-import 'swiper/swiper-bundle.css';
-import { Power1, gsap } from 'gsap';
 
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { $, $$ } from './helper.js';
@@ -148,6 +147,58 @@ gsap.registerPlugin(ScrollTrigger);
 			translateX: 0,
 		});
 })();
+
+
+
+(function () {
+  const tx = gsap.timeline({
+		ease: 'none',
+		scrollTrigger: {
+			trigger: '#st3',
+			scrub: 1,
+			start: '0 center',
+			end: `bottom`,
+		},
+	})
+  tx.from('#ipx1', {
+    translateX: '-100%',
+    opacity: 0
+  }).to('#ipx1', {
+    translateX: '0',
+    opacity: 1
+  }).from('#tpx1', {
+    translateX: '50%',
+    opacity: 0
+  }).to('#tpx1', {
+    translateX: '0',
+    opacity: 1
+  })
+
+  const tx2 = gsap.timeline({
+		ease: 'none',
+		scrollTrigger: {
+			trigger: '#ipx1',
+			scrub: 0,
+			start: '-40px center',
+			end: `bottom`,
+		},
+	})
+  tx2.from('#ipx2', {
+    translateX: '100%',
+    opacity: 0
+  }).to('#ipx2', {
+    translateX: '0',
+    opacity: 1
+  }).from('#tpx2', {
+    translateX: '-50%',
+    opacity: 0
+  }).to('#tpx2', {
+    translateX: '0',
+    opacity: 1
+  })
+  
+})();
+
 
 (function () {
 	const stories = document.querySelectorAll('.story');
